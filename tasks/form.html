@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Форма</title>
+
+    <style>
+        :root {
+            --left-margin: 204px;
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --left-margin: 0;
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #d4d5da;
+            color: #333;
+            font-family: Verdana, sans-serif;
+            font-size: 12px;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 40px auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header span {
+            font-weight: 600;
+        }
+
+        .form {
+            position: relative;
+            padding-bottom: 25px;
+            background: #F6F6F6;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.18);
+        }
+
+        .form::before,
+        .form::after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            height: 100%;
+            background: #F9F9F8;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.18);
+        }
+
+        .form::before {
+            top: 3px;
+            left: 2px;
+            right: 2px;
+        }
+
+        .form::after {
+            z-index: -2;
+            top: 6px;
+            left: 4px;
+            right: 4px;
+        }
+
+        .form__shadow {
+            z-index: -2;
+            position: absolute;
+            bottom: 3px;
+            width: 97%;
+            height: 0px;
+            left: 1.5%;
+        }
+
+        .form__shadow::before,
+        .form__shadow::after {
+            content: "";
+            position: absolute;
+            width: 50%;
+            height: 5px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+            transform: skew(-2deg, -1deg);
+        }
+
+        .form__shadow::after {
+            left: auto;
+            right: 0;
+            transform: skew(2deg, 1deg);
+        }
+
+        /* 1 блок  */
+        h2 {
+            margin: 0;
+            padding: 20px 0 20px var(--left-margin);
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .form__item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .form__item label {
+            width: var(--left-margin);
+            padding-right: 14px;
+            text-align: right;
+        }
+
+        .form__item input[type="text"],
+        .form__item textarea {
+            width: 310px;
+            max-width: 100%;
+            padding: 6px;
+            color: #757575;
+            border: none;
+            outline: none;
+            box-shadow: 0 2px 3px #ccc inset;
+        }
+
+        .form__item input[type="text"]::placeholder,
+        .form__item textarea::placeholder {
+            color: #757575;
+        }
+
+        .input-color {
+            width: 53px;
+            height: 31px;
+            padding: 3px;
+            border-radius: 0;
+            border: 1px solid #dedede;
+        }
+
+        /* 2 блок  */
+        .additional {
+            position: relative;
+            padding-bottom: 4px;
+            background: #fff6c8;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #f2e3aa;
+            transform-style: preserve-3d;
+        }
+
+        .additional::after {
+            content: "";
+            position: absolute;
+            top: 90%;
+            left: 2%;
+            height: 15px;
+            width: 96%;
+            border-radius: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transform: translateZ(-1px);
+        }
+
+        .form__item--top {
+            align-items: flex-start;
+        }
+
+        .form__item--top label {
+            margin-top: 4px;
+        }
+
+        .form__item textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        /* 3 блок  */
+        .options {
+            z-index: 10;
+            position: relative;
+            max-width: 280px;
+            margin-top: 20px;
+            margin-left: var(--left-margin);
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding-top: 4px;
+            cursor: pointer;
+        }
+
+        .option input {
+            display: none;
+            margin-top: 2px;
+        }
+
+        .option span {
+            display: block;
+            position: relative;
+            padding-left: 20px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .option span::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 0 0 #ccc;
+            text-align: center;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        .option input[type=radio] + span::before {
+            border-radius: 100%;
+        }
+
+        .option input[type=radio]:checked + span::before {
+            background: #985897;
+            box-shadow: inset 0 0 0 4px #FFFACF;
+        }
+
+        .option input[type=checkbox] + span::before {
+            content: "\002713"; /* Видел, через border галочку нужно было сделать, времени не хватило с другим тестовым заданием сделать */
+            background: #fff;
+            color: transparent;
+            font-size: 9px;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+
+        .option input[type=checkbox]:checked + span::before {
+            background: #FFFACF;
+            color: #985897;
+            box-shadow: inset 0 0 1px #ccc;
+        }
+
+        .btn {
+            display: block;
+            position: relative;
+            padding: 10px 16px;
+            background: linear-gradient(to bottom, #9A85ED, #513BCA);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn::after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            top: 74%;
+            left: 5%;
+            height: 10px;
+            width: 90%;
+            border-radius: 25%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+        }
+
+        @media (max-width: 682px) {
+            main {
+                margin: 40px 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form > *:not(:last-child) {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .form__item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .options {
+                max-width: 100%;
+            }
+
+            .form__item label {
+                width: auto;
+                text-align: left;
+                margin-right: 0;
+                margin-bottom: 4px;
+            }
+
+            .form__item input[type="text"],
+            .form__item textarea {
+                width: auto;
+                max-width: 100%;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                padding: 10px 0;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header {
+                display: block;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <main>
+        <div class="header">
+            <h1>Заполните поля</h1>
+            <span>ну пожалуйста</span>
+        </div>
+
+        <form class="form">
+            <div class="form__first-block">
+                <h2>Основное</h2>
+
+                <div class="form__item">
+                    <label for="name">Имя</label>
+                    <input id="name" type="text" placeholder="по паспорту" />
+                </div>
+
+                <div class="form__item">
+                    <label for="color">Цвет вашего настроения</label>
+                    <input id="color" class="input-color" type="color" value="#0000ff"/>
+                </div>
+            </div>
+
+            <div class="additional">
+                <h2>Дополнительное</h2>
+
+                <div class="form__item form__item--top">
+                    <label for="comment">Комментарий</label>
+                    <textarea id="comment" placeholder="Напишите хоть что-нибудь.
+Если хотите, конечно."></textarea>
+                </div>
+            </div>
+
+            <div class="options">
+                <label class="option">
+                    <input id="radio" type="radio" name="radio"/>
+                    <span>Ну а тут просто полежит радиобатон</span>
+                </label>
+
+                <label class="option">
+                    <input id="check" type="checkbox" checked/>
+                    <span>Соглашаюсь на всё, что бы вы не придумали и осознаю, что это может означать
+                        <a href="#">что угодно</a>
+                    </span>
+                </label>
+
+                <button class="btn" type="submit">Отправить все мои данные</button>
+            </div>
+            <div class="form__shadow"></div>
+        </form>
+    </main>
+
+</body>
+</html>

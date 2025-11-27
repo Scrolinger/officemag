@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Витрина</title>
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding-top: 40px;
+        }
+
+        .showcase {
+            max-width: 1165px;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        .showcase__viewport {
+            display: flex;
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .showcase__item {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 290px;
+            margin-bottom: 18px;
+            padding: 60px 24px 40px;
+            background: #fff;
+            border: 1px solid #f3f3f3;
+            scroll-snap-align: start;
+            text-decoration: none;
+        }
+
+        .showcase__item img {
+            display: block;
+            width: 100%;
+            height: 180px;
+            margin-bottom: 45px;
+            object-fit: cover;
+        }
+
+        .showcase h3 {
+            margin: 0;
+            color: #333;
+            font-family: sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* scroll */
+        .showcase__viewport::-webkit-scrollbar {
+            height: 12px;
+        }
+
+        .showcase__viewport::-webkit-scrollbar-track {
+            background: #E6E6E6;
+            border-radius: 10px;
+        }
+
+        .showcase__viewport::-webkit-scrollbar-thumb {
+            background-color: #83141F;
+            border-radius: 10px;
+        }
+
+        .showcase__viewport::-webkit-scrollbar-button:single-button {
+            height: 0;
+            width: 0;
+        }
+
+        .showcase__viewport::-webkit-scrollbar {
+            scrollbar-color: #83141F #E6E6E6;
+            scrollbar-width: thin;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="showcase">
+        <div class="showcase__viewport">
+
+            <a class="showcase__item" href="#">
+                <img src="img/showcase1.jpg" alt="Набор настольный BESTAR «Amenhotep» из дерева, 8 предметов, двойной лоток, светлая вишня">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Amenhotep» из дерева, 8 предметов, двойной лоток, светлая вишня
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="img/showcase2.jpg" alt="Набор настольный BESTAR «Charon» из дерева, 7 предметов, двойной лоток, красное дерево">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Charon» из дерева, 7 предметов, двойной лоток, красное дерево
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="img/showcase3.jpg" alt="Набор настольный BESTAR «Charon» из дерева, 7 предметов, двойной лоток, орех">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Charon» из дерева, 7 предметов, двойной лоток, орех
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="img/showcase4.jpg" alt="Набор настольный BESTAR «Hercules» из дерева, 5 предметов, двойной лоток, красное дерево">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Hercules» из дерева, 5 предметов, двойной лоток, красное дерево
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="https://imgholder.ru/230x220/ccc/fff&text=IMAGE+HOLDER" alt="Набор настольный BESTAR «Hercules» из дерева, 5 предметов, дуб">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Hercules» из дерева, 5 предметов, дуб
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="https://imgholder.ru/220x230/aaa/ccc&text=IMAGE+HOLDER" alt="Набор настольный BESTAR «Something» из дерева, 6 предметов, орех">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Something» из дерева, 6 предметов, орех
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="https://imgholder.ru/220x230/aaa/ccc&text=IMAGE+HOLDER" alt="Набор настольный BESTAR «Something» из дерева, 6 предметов, орех">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Something» из дерева, 6 предметов, орех
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="https://imgholder.ru/220x230/aaa/ccc&text=IMAGE+HOLDER" alt="Набор настольный BESTAR «Something» из дерева, 6 предметов, орех">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Something» из дерева, 6 предметов, орех
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="https://imgholder.ru/220x230/aaa/ccc&text=IMAGE+HOLDER" alt="Набор настольный BESTAR «Something» из дерева, 6 предметов, орех">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Something» из дерева, 6 предметов, орех
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="https://imgholder.ru/220x230/aaa/ccc&text=IMAGE+HOLDER" alt="Набор настольный BESTAR «Something» из дерева, 6 предметов, орех">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Something» из дерева, 6 предметов, орех
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="https://imgholder.ru/220x230/aaa/ccc&text=IMAGE+HOLDER" alt="Набор настольный BESTAR «Something» из дерева, 6 предметов, орех">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Something» из дерева, 6 предметов, орех
+                </h3>
+            </a>
+
+            <a class="showcase__item" href="#">
+                <img src="https://imgholder.ru/220x230/aaa/ccc&text=IMAGE+HOLDER" alt="Набор настольный BESTAR «Something» из дерева, 6 предметов, орех">
+                <h3 class="showcase__title">
+                    Набор настольный BESTAR «Something» из дерева, 6 предметов, орех
+                </h3>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

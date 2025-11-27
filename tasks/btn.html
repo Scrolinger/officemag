@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Кнопка</title>
+
+    <!--
+    Так увлеченно делал 3 состояния кнопки, что 1 провалилась. Попробуйте найти комбинацию кликов по первым двум кнопкам, чтоб разблокировать третью.
+    Давайте сотрудничать вместе пока не разгадаете одной лишь мышкой секретную комбинацию кликов отжатия для третьего состояния.
+    -->
+
+    <style>
+
+        @font-face {
+            font-family: SegoeUI;
+            src: local("Segoe UI Bold"),
+                url(c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format("woff2"),
+                url(c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format("woff"),
+                url(c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format("truetype");
+            font-weight: 600;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            gap: 16px;
+            background: #436da0;
+        }
+
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100px;
+            height: 32px;
+            padding: 8px 0 10px;
+
+            color: #fff;
+            font-family: "SegoeUI", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: -0.05px;
+            text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4);
+
+            background: #436da0
+                        linear-gradient(0deg, rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.07)); /* наложение градиента снизу вверху */
+
+            box-shadow: 0 3px 7px rgba(255, 255, 255, 0.17) inset, /* тиснение: подсветка сверху */
+                        0 -3px 7px rgba(0, 0, 0, 0.12) inset, /* тиснение: затемнение снизу */
+                        0 1px 1px rgba(255, 255, 255, 0.2) inset, /* внутренняя тень сверху, свечение */
+                        0 0 1px 1px rgba(255, 255, 255, 0.1) inset, /* внутреннее свечение */
+                        0 2px 4px rgba(0, 0, 0, 0.4), /* тень снизу */
+                        0 0 1px rgba(28, 68, 116, 1), /* обводка out */
+                        0 0 0 rgba(28, 68, 116, 1) inset; /* обводка in */
+
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+
+            transition: background 0.25s, box-shadow 0.25s, transform 0.25s, color 0.25s;
+        }
+
+        .btn::after {
+            z-index: 10;
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0) url("img/noise.png") center center no-repeat;
+            border-radius: inherit;
+            pointer-events: none;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        /* Hover */
+        .btn:hover::after,
+        .hover::after {
+            background: rgba(255, 255, 255, 0.1) url("img/noise.png") center center no-repeat;
+        }
+
+        /* Active */
+        .btn:active,
+        .active:not(.hover) {
+            color: rgba(255, 255, 255, 0.6);
+            background: #436da0
+                        linear-gradient(0deg, rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.07)); /* наложение градиента снизу вверху */
+                        /* linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06)); наложение градиента сверху вниз, будто кнопка вогнутая при нажатии, анимировать градиент не хватило времени */
+
+            box-shadow: 0 3px 7px rgba(255, 255, 255, 0.02) inset, /* тиснение: подсветка сверху */
+                        0 -3px 7px rgba(0, 0, 0, 0.02) inset, /* тиснение: затемнение снизу */
+                        0 1px 5px rgba(0, 0, 0, 0.4) inset, /* внутренняя тень сверху, свечение */
+                        0 0 0 0 rgba(255, 255, 255, 0) inset, /* внутреннее свечение */
+                        0 1px 1px rgba(255, 255, 255, 0.27), /* тень снизу */
+                        0 0 0 rgba(28, 68, 116, 1), /* обводка out */
+                        0 0 1px rgba(28, 68, 116, 1) inset; /* обводка in */
+
+            transform: scale(0.975) translateY(1px);
+        }
+
+        .btn:active::after,
+        .active:not(.hover)::after {
+            background: rgba(255, 255, 255, 0) url("img/noise.png") center center no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="btn" type="button"><span>Кнопка</span></button>
+    <button class="btn hover" type="button"><span>Кнопка</span></button>
+    <button class="btn active" type="button"><span>Кнопка</span></button>
+
+</body>
+</html>

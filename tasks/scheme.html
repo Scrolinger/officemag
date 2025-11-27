@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Масоны Самсона</title>
+
+    <style type="text/css">
+        :root {
+            --margin-left: 120px;
+            --line-left: 100px;
+            --line-width: 20px;
+        }
+
+        @media (max-width: 800px) {
+            :root {
+                --margin-left: 35px;
+                --line-left: 15px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            :root {
+                --margin-left: 25px;
+                --line-width: 10px;
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #343841;
+            font-family: system-ui, sans-serif;
+        }
+
+        .nihil {
+            max-width: 992px;
+            margin: 0 auto;
+            padding: 24px 48px 24px 24px;
+        }
+
+        .nihil h1 {
+            margin: 12px 0 40px;
+            color: #fff;
+            font-size: 32px;
+            font-weight: 300;
+        }
+
+        .nihil span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            padding: 10px 17px;
+            margin-bottom: 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        /*  */
+        .flex {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .unus__item {
+            margin-top: -10px;
+        }
+
+        .unus__inner,
+        .duo,
+        .tres {
+            margin-left: var(--margin-left);
+        }
+
+        .duo__item {
+            position: relative;
+            top: 10px;
+        }
+
+        /* lines */
+        .nihil span {
+            position: relative;
+        }
+
+        .nihil span:not(.unus__main)::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: calc(var(--line-width) * -1);
+            transform: translateY(-100%);
+            width: var(--line-width);
+            border-bottom: 1px solid #aaa;
+        }
+
+        .unus,
+        .unus__item,
+        .duo,
+        .quattuor,
+        .quattuor__item {
+            position: relative;
+        }
+
+        .unus::before,
+        .unus__item::before,
+        .duo::before,
+        .quattuor::before,
+        .quattuor__item::before {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            inset: 20px var(--line-left) 40px;
+            border-left: 1px solid #aaa;
+            border-top: 1px solid #aaa;
+        }
+
+        .unus__item::before {
+            inset: 30px -20px 40px;
+            border-top: none;
+        }
+
+        .duo::before {
+            inset: 30px var(--line-left) 40px;
+        }
+
+        .quattuor::before {
+            border-left: none;
+        }
+
+        .quattuor__item::before {
+            inset: 20px -20px 40px;
+            border: 1px solid #aaa;
+        }
+
+        /* arrows */
+        .arrows {
+            position: relative;
+        }
+
+        .arrows::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 6px;
+            height: 6px;
+            border-left: 1px solid #aaa;
+            border-top: 1px solid #aaa;
+            transform: translate(1px, -55%) rotate(-45deg);
+            transform-origin: center center;
+        }
+
+        .unus::after,
+        .duo::after {
+            content: "";
+            position: absolute;
+            top: 50px;
+            left: var(--line-left);
+            width: 6px;
+            height: 6px;
+            border-left: 1px solid #aaa;
+            border-top: 1px solid #aaa;
+            transform: translate(-40%, -7px) rotate(45deg);
+            transform-origin: center center;
+        }
+
+        .duo::after {
+            top: 64px;
+            transform: translate(-40%, 0) rotate(45deg);
+        }
+
+        @media (max-width: 800px) {
+            .unus > .flex,
+            .duo .flex,
+            .flex.quattuor {
+                gap: 20px 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tres {
+                max-width: max-content;
+            }
+
+            .flex.quattuor {
+                display: block;
+                margin-left: 0;
+            }
+
+            .quattuor::before {
+                inset: 40px 15px 67%;
+                border-top: 0;
+                border-left: 1px solid #aaa;
+            }
+
+            .quattuor .arrows:not(.quattuor__item .arrows)::after {
+                top: 100%;
+                left: var(--line-left);
+                transform: translate(-45%, 1px) rotate(45deg);
+            }
+
+            .quattuor__item {
+                margin-left: var(--margin-left);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .duo {
+                max-width: max-content;
+            }
+
+            .duo .flex {
+                display: block;
+            }
+
+            .duo__item {
+                top: 0;
+                left: var(--margin-left);
+            }
+            
+            .duo::before {
+                inset: 60px 100% 40px var(--line-left);
+
+            }
+
+            .duo > .flex .arrows::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .unus > .flex {
+                display: block;
+            }
+
+            .unus__item {
+                margin-top: 0;
+                margin-left: var(--margin-left);
+            }
+
+            .unus::before {
+                border-top: none;
+            }
+
+            .arrows.unus__main::after {
+                display: none;
+            }
+
+            .unus__item::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nihil {
+                padding: 16px;
+            }
+
+            .quattuor__item::before {
+                inset: 20px -10px 40px -10px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="nihil">
+        <h1>Масоны Самсона</h1>
+
+        <div class="unus">
+            <div class="flex">
+                <div><span class="arrows unus__main">Алликсаар</span></div>
+                <div class="unus__item">
+                    <div><span>Ду Хаст<br>Вячеславович</span></div>
+                    <div><span>Анастасия Ширинкина</span></div>
+                </div>
+            </div>
+
+            <div class="duo">
+                <div class="flex">
+                    <div><span class="arrows">Станислав Клитотехнис</span></div>
+                    <div class="duo__item"><span>Александр Троян</span></div>
+                </div>
+
+                <div class="tres">
+                    <div><span>Людмила<br>Водолазская</span></div>
+
+                    <div class="flex quattuor">
+                        <div><span class="arrows">Ольга Боргдорф</span></div>
+                        <div class="quattuor__item">
+                            <div><span class="arrows">Дмитрий Возигнуй</span></div>
+                            <div><span>Кристина Болтушкина</span></div>
+                            <div><span>Максим Висюлькин</span></div>
+                        </div>
+                    </div>
+
+                    <div><span>Сергей Брус</span></div>
+                </div>
+
+            </div>
+
+            <div class="unus__inner">
+                <div><span>Игорь Зверёк</span></div>
+                <div><span>Антон Строй</span></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
