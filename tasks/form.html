@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Форма</title>
 
@@ -135,11 +135,17 @@
             border: none;
             outline: none;
             box-shadow: 0 2px 3px #ccc inset;
+            transition: box-shadow 0.3s;
         }
 
         .form__item input[type="text"]::placeholder,
         .form__item textarea::placeholder {
             color: #757575;
+        }
+
+        .form__item input[type="text"]:focus,
+        .form__item textarea:focus {
+            box-shadow: 0 1px 7px #ccc inset;
         }
 
         .input-color {
@@ -217,41 +223,74 @@
 
         .option span::before {
             content: "";
-            display: block;
             position: absolute;
-            left: 0;
             top: 2px;
-            width: 14px;
-            height: 14px;
+            left: 0;
+            width: 15px;
+            height: 15px;
             background: #fff;
-            border: 1px solid #ccc;
-            box-shadow: inset 0 0 0 #ccc;
+            border: 1px solid #c5c5c5;
+            box-shadow: inset 0 0 0 #c5c5c5;
             text-align: center;
-            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            transition: background 0.3s, color 0.3s, border 0.3s;
         }
 
-        .option input[type=radio] + span::before {
+        .option span::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 0;
+            transition: transform 0.3s, opacity 0.3s, border 0.3s;
+        }
+
+        /* radio */
+        .option input[type="radio"] + span::before {
             border-radius: 100%;
         }
 
-        .option input[type=radio]:checked + span::before {
-            background: #985897;
-            box-shadow: inset 0 0 0 4px #FFFACF;
+        .option input[type="radio"]:checked + span::before {
+            background: #FFFACF;
+            border-color: #EEE492;
         }
 
-        .option input[type=checkbox] + span::before {
-            content: "\002713"; /* Видел, через border галочку нужно было сделать, времени не хватило с другим тестовым заданием сделать */
-            background: #fff;
-            color: transparent;
-            font-size: 9px;
-            font-weight: 700;
+        .option input[type="radio"] + span::after {
+            width: 15px;
+            height: 15px;
+            background: #863C8D;
+            border-radius: 100%;
+            opacity: 0;
+        }
+
+        .option input[type="radio"]:checked + span::after {
+            transform: scale(0.5);
+            opacity: 1;
+        }
+
+        /* checkbox */
+        .option input[type="checkbox"] + span::before {
+            top: 0;
             border-radius: 5px;
         }
 
-        .option input[type=checkbox]:checked + span::before {
+        .option input[type="checkbox"]:checked + span::before {
             background: #FFFACF;
-            color: #985897;
-            box-shadow: inset 0 0 1px #ccc;
+            border-color: #EEE492;
+        }
+
+        .option input[type="checkbox"] + span::after {
+            left: 5px;
+            width: 5px;
+            height: 9px;
+            border-right: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+            transform: rotate(30deg) skewY(10deg) scale(0.5);
+            opacity: 0;
+        }
+
+        .option input[type="checkbox"]:checked + span::after {
+            border-color: #863C8D;
+            transform: rotate(30deg) skewY(10deg) scale(1);
+            opacity: 1;
         }
 
         .btn {
@@ -343,7 +382,7 @@
 
                 <div class="form__item">
                     <label for="name">Имя</label>
-                    <input id="name" type="text" placeholder="По паспорту" />
+                    <input id="name" type="text" placeholder="По паспорту"/>
                 </div>
 
                 <div class="form__item">
@@ -383,4 +422,3 @@
 </body>
 
 </html>
-
